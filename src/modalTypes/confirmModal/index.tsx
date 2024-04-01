@@ -8,13 +8,13 @@ type Props = {
     information: string;
 }
 
-export const InfoModal = ({ isOpen, title, subTitle, information}: Props) => {
+export const ConfirmModal = ({ isOpen, title, subTitle, information}: Props) => {
     return(
         <Modal 
             isOpen={isOpen}
             maxWidth="xs"
-            body={<Modal.Body content={<Content information={information} />} />}
             header={<Modal.Header title={title} subTitle={subTitle} />}
+            body={<Modal.Body content={<Content information={information} />} />}
         />
     )
 }

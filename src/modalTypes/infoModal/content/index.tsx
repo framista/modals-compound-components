@@ -7,7 +7,7 @@ type Props = {
 
 export const Content = ({ information }: Props) => {
     return (
-        <div className="content__container">
+        <div className="info-modal content__container">
             <Typography variant='body2'>{information}</Typography>
         </div>
     )

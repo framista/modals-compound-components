@@ -1,9 +1,9 @@
-.content__container {
+.info-modal.content__container {
     margin: 20px 10px 25px;
     text-align: center;
 }
 
-.content__container p {
+.info-modal.content__container p {
     line-height: 1.5;
     text-wrap: balance;
 }
