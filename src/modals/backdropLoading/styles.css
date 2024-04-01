@@ -1,0 +1,8 @@
+.dialog .backdrop-loading {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.15);
+}
+
+.backdrop-loading__progress {
+    margin-top: 20px;
+}

@@ -1,11 +1,13 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 export type ModalState = {
     isOpen: boolean;
+    isBackdropLoadingShown: boolean;
 }
 
 export const initialState: ModalState = {
-    isOpen: false
+    isOpen: false,
+    isBackdropLoadingShown: false,
 }
 
 export const modalSlice = createSlice({
@@ -17,15 +19,19 @@ export const modalSlice = createSlice({
         },
         closeModal: (state) => {
             state.isOpen = false;
+        },
+        setIsBackdropLoadingShown: (state, { payload }: PayloadAction<ModalState['isBackdropLoadingShown']>) => {
+            state.isBackdropLoadingShown = payload;
         }
     },
      selectors: { 
-        selectIsModalOpen: (state) => state.isOpen
+        selectIsModalOpen: (state) => state.isOpen,
+        selectIsBackdropLoadingShown: (state) => state.isBackdropLoadingShown,
      }
 })
 
 export const modalReducer = modalSlice.reducer;
 
-export const { selectIsModalOpen } = modalSlice.selectors;
+export const { selectIsModalOpen, selectIsBackdropLoadingShown } = modalSlice.selectors;
 
-export const { openModal, closeModal } = modalSlice.actions;
+export const { openModal, closeModal, setIsBackdropLoadingShown } = modalSlice.actions;

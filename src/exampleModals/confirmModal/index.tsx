@@ -1,12 +1,23 @@
+import { useCallback } from "react";
 import { Button } from "@mui/material";
-import { useModalContext, useOpenModal } from "../../modals/context";
+import { useCloseModal, useModalContext, useOpenModal } from "../../modals/context";
 import { withModalProvider } from "../../modals/hoc";
 import { buttonText, information, subTitle, title } from "./constants";
 import { ConfirmModal } from "../../modalTypes";
 
 const ConfirmModalComponent = () => {
     const { state } = useModalContext();
-    const openModal = useOpenModal();;
+    const openModal = useOpenModal();
+    const closeModal = useCloseModal();
+
+    const onSubmit = useCallback(() => {
+        return new Promise<void>((res) => {
+            setTimeout(() => {
+                closeModal();
+                res();
+            }, 4000)
+        })
+    }, [closeModal])
 
     return(
         <>
@@ -14,6 +25,7 @@ const ConfirmModalComponent = () => {
             <ConfirmModal
                 isOpen={state.isOpen}
                 information={information}
+                onSubmit={onSubmit}
                 subTitle={subTitle}
                 title={title}
             />

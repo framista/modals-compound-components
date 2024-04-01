@@ -1,6 +1,6 @@
 import React, { createContext, useCallback, useContext, useReducer } from "react";
 import { UnknownAction } from "@reduxjs/toolkit";
-import { ModalState, closeModal, initialState, modalReducer, openModal } from "./reducer";
+import { ModalState, closeModal, initialState, modalReducer, openModal, setIsBackdropLoadingShown } from "./reducer";
 
 type ModalContext = {
     state: ModalState;
@@ -49,4 +49,14 @@ export const useCloseModal = () => {
     }, [dispatch])
 
     return handleCloseModal;
+}
+
+export const useChangeBackdropLoadingModal = () => {
+    const { dispatch } = useModalContext();
+
+    const handleChangeBackdropLoading = useCallback((v: ModalState['isBackdropLoadingShown']) => {
+        dispatch(setIsBackdropLoadingShown(v));
+    }, [dispatch])
+
+    return handleChangeBackdropLoading;
 }

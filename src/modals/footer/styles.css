@@ -1,0 +1,25 @@
+.modal-footer {
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-footer__actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+}
+
+.modal-footer__actions button {
+    width: 100%;
+}
+
+.modal-footer__actions--withOption {
+    flex: 0;
+}
+
+.modal-footer__actions--withOption button {
+    width: auto;
+}

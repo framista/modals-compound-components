@@ -1,0 +1,7 @@
+.dialog .dialog-container {
+    border-radius: 15px;
+}
+
+.dialog .dialog-content {
+    position: relative;
+}
