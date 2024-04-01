@@ -1,0 +1,24 @@
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 10px 10px 20px;
+}
+
+.modal-header__titles {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.modal-header__title {
+    font-size: 20px;
+    line-height: 1 !important;
+    font-weight: 700;
+}
+
+.modal-header__subtitle {
+    line-height: 1 !important;
+    color: grey;
+}
