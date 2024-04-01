@@ -12,13 +12,13 @@
     gap: 5px;
 }
 
-.modal-header__title {
-    font-size: 20px;
-    line-height: 1 !important;
+.modal-header .modal-header__title {
+    font-size: 18px;
+    line-height: 1;
     font-weight: 700;
 }
 
-.modal-header__subtitle {
-    line-height: 1 !important;
+.modal-header .modal-header__subtitle {
+    line-height: 1;
     color: grey;
 }
