@@ -1,9 +1,8 @@
 import { Button } from "@mui/material";
-import Modal from "../../modals"
-import { useModalContext, useOpenModal } from "../../modals/context"
+import { useModalContext, useOpenModal } from "../../modals/context";
 import { withModalProvider } from "../../modals/hoc";
-import { Content } from "./content";
-import { buttonText, subTitle, title } from "./constants";
+import { buttonText, information, subTitle, title } from "./constants";
+import { InfoModal } from "..";
 
 const InfoModalComponent = () => {
     const { state } = useModalContext();
@@ -12,14 +11,14 @@ const InfoModalComponent = () => {
     return(
         <>
             <Button onClick={openModal} variant="contained">{buttonText}</Button>
-            <Modal 
+            <InfoModal 
                 isOpen={state.isOpen}
-                maxWidth="sm"
-                body={<Modal.Body content={<Content />} />}
-                header={<Modal.Header title={title} subTitle={subTitle} />}
+                information={information}
+                subTitle={subTitle}
+                title={title}
             />
         </>
     )
 }
 
-export const InfoModal = withModalProvider(InfoModalComponent)
+export const InfoModalUsage = withModalProvider(InfoModalComponent)

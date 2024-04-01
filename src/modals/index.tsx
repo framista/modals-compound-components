@@ -3,14 +3,14 @@ import { Dialog, DialogProps, Divider } from "@mui/material"
 import { ModalHeader } from "./header";
 import { ModalBody } from "./body";
 
-type Props = {
+export type ModalProps = {
     isOpen: boolean;
     header: React.ReactNode;
     body: React.ReactNode;
     maxWidth?: DialogProps['maxWidth'];
 }
 
-const Modal = ({ body, header, isOpen, maxWidth = 'md' }: Props) => {
+const Modal = ({ body, header, isOpen, maxWidth = 'md' }: ModalProps) => {
 
     return (
         <Dialog 

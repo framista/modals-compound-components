@@ -1,9 +1,9 @@
-import { InfoModal } from "./exampleModals"
+import { InfoModalUsage } from "./exampleModals/infoModal"
 
 function App() {
   return (
     <div className="container">
-      <InfoModal />
+      <InfoModalUsage />
     </div>
   )
 }
