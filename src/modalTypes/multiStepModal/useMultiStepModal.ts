@@ -1,9 +1,13 @@
 import { useCallback, useEffect, useState } from "react"
+import { useCloseModal } from "../../modals/context";
 
 const firstStep = 1;
 
 export const useMultiStepModal = (stepAmounts: number, isOpen: boolean) => {
     const [step, setStep] = useState(firstStep);
+
+    const closeModal = useCloseModal();
+
     const isFirstStep = step === firstStep;
     const isLastStep = step === stepAmounts;
 
@@ -12,11 +16,12 @@ export const useMultiStepModal = (stepAmounts: number, isOpen: boolean) => {
 
     const goNext = useCallback(() => {
         setStep(prevStep => prevStep < stepAmounts ? prevStep + 1 : prevStep);
-    }, [])
+    }, [step])
 
     const goBack = useCallback(() => {
-        setStep(prevStep => prevStep > 1 ? prevStep - 1 : prevStep);
-    }, [setStep])
+        if (isFirstStep) return closeModal();
+        setStep(prevStep => prevStep - 1);
+    }, [setStep, closeModal, isFirstStep])
 
     useEffect(() => {
         return () => setStep(firstStep);

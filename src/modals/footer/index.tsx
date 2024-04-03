@@ -29,7 +29,7 @@ export const ModalFooter = ({
     const handleCancel = useCallback(() => {
         if (onCancel) return onCancel();
         handleCloseModal()
-    }, [handleCloseModal])
+    }, [handleCloseModal, onCancel])
 
     const handleSubmit = useCallback(async () => {
         try {
@@ -41,7 +41,7 @@ export const ModalFooter = ({
         } finally {
             handleChangeBackdropLoading(false);
         }
-    }, [handleCloseModal, isSubmitDisabled, handleChangeBackdropLoading])
+    }, [handleCloseModal, isSubmitDisabled, handleChangeBackdropLoading, onSubmit])
     
 
     return (
