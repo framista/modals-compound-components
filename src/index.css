@@ -9,3 +9,8 @@ body {
   gap: 10px;
   max-width: 300px;
 }
+
+
+.label {
+  font-size: 14px !important;
+}
