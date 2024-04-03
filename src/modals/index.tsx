@@ -4,17 +4,19 @@ import { ModalHeader } from "./header";
 import { ModalBody } from "./body";
 import { ModalFooter } from "./footer";
 import { BackdropLoading } from "./backdropLoading";
+import { ModalStepper } from "./stepper";
 import './styles.css';
 
 export type ModalProps = {
     isOpen: boolean;
     header: React.ReactNode;
+    stepper?: React.ReactNode;
     body: React.ReactNode;
     footer?: React.ReactNode;
     maxWidth?: DialogProps['maxWidth'];
 }
 
-const Modal = ({ body, header, footer, isOpen, maxWidth = 'md' }: ModalProps) => {
+const Modal = ({ body, header, footer, stepper, isOpen, maxWidth = 'md' }: ModalProps) => {
 
     return (
         <div className="dialog">
@@ -27,6 +29,7 @@ const Modal = ({ body, header, footer, isOpen, maxWidth = 'md' }: ModalProps) =>
                 <div className="dialog-content">
                     <BackdropLoading />
                     {header}
+                    {stepper}
                     {body}
                     {footer}
                 </div>
@@ -36,6 +39,7 @@ const Modal = ({ body, header, footer, isOpen, maxWidth = 'md' }: ModalProps) =>
 }
 
 Modal.Header = ModalHeader;
+Modal.Stepper = ModalStepper;
 Modal.Body = ModalBody;
 Modal.Footer = ModalFooter;
 
