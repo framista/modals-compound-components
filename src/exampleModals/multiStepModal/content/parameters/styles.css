@@ -1,0 +1,29 @@
+.parameters__title {
+    text-align: center;
+    display: block;
+}
+
+.parameters__group {
+    padding-top: 10px;
+    padding-bottom: 5px;
+    display: block;
+    line-height: 1 !important;
+}
+
+.parameters__row {
+    margin-right: 8px;
+    display: grid;
+    grid-template-columns: 40px 25px 1fr 80px;
+    align-items: center;
+}
+
+.parameters__dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.parameters__text--error {
+    display: block;
+    padding-top: 10px;
+}
