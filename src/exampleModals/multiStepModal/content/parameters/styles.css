@@ -23,7 +23,12 @@
     border-radius: 50%;
 }
 
+.parameters__label {
+    cursor: pointer;
+}
+
 .parameters__text--error {
     display: block;
     padding-top: 10px;
+    height: 25px;
 }

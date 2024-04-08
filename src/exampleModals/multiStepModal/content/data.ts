@@ -1,36 +1,11 @@
 import { groupBy, prop } from "ramda";
-
-type Malfunction = {
-    id: string;
-    name:  string;
-    color: string;
-}
-
-type Parameter = {
-    id: string;
-    name:  string;
-    color: string;
-    unit: string;
-    type: ParameterKind;
-}
+import { ChartKind, Malfunction, Parameter, ParameterKind } from "../types";
 
 export const malfunctions: Malfunction[] = [
     { id: '1', name: 'Low water level', color: "pink" },
     { id: '2', name: 'Machine failure', color: "blue" },
     { id: '3', name: 'Radiator failure', color: "purple" },
 ];
-
-enum ChartKind {
-    STEP_AFTER = 'step-after',
-    BASIC = 'basic',
-    MONOTONE = 'monotone',
-    BACKGROUND = 'background',
-};
-
-enum ParameterKind {
-    PERIOD = 'period',
-    SINGLE = 'single',
-};
 
 export const chartForParameter: Record<ParameterKind, ChartKind[]> = {
     [ParameterKind.PERIOD]: [ChartKind.STEP_AFTER, ChartKind.BACKGROUND],
@@ -48,3 +23,5 @@ export const parameters: Parameter[] = [
 ]
 
 export const grouppedParameters = groupBy(prop('unit'), parameters);
+
+

@@ -4,10 +4,12 @@ import { withModalProvider } from "../../modals/hoc";
 import { MultiStepModal } from "../../modalTypes";
 import { buttonText, stepAmounts, subTitle, title } from "./constants";
 import { Content } from "./content";
-
+import { ChartModalProvider, useChartModalContext } from "./context";
+ 
 const MultiStepModalComponent = () => {
     const { state } = useModalContext();
-    const openModal = useOpenModal();;
+    const { state: chartModalState } = useChartModalContext();
+    const openModal = useOpenModal();
 
     return(
         <>
@@ -17,6 +19,7 @@ const MultiStepModalComponent = () => {
                 onSubmit={() => {}}
                 stepsAmount={stepAmounts}
                 isOpen={state.isOpen}
+                isSubmitDisabled={chartModalState.isSubmitDisabled}
                 subTitle={subTitle}
                 title={title}
             />
@@ -24,4 +27,8 @@ const MultiStepModalComponent = () => {
     )
 }
 
-export const MultiStepModalUsage = withModalProvider(MultiStepModalComponent)
+export const MultiStepModalUsage = withModalProvider(() => 
+    <ChartModalProvider>
+        <MultiStepModalComponent/>
+    </ChartModalProvider>
+)
