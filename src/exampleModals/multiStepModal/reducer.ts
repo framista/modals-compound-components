@@ -37,6 +37,9 @@ export const chartModalSlice = createSlice({
             }
             state.selectedUnits = [...new Set(state.selectedParameters.map(p => p.unit))];
             state.isSubmitDisabled = !!getParameterError(state.selectedParameters, state.selectedUnits);
+        },
+        changeChartKindForParameterId: (state, { payload: { id, kind } } : PayloadAction<{ id: Parameter['id'], kind: ChartKind }>) => {
+            state.chartKindForParameterId[id] = kind;
         }
     },
     selectors: {
@@ -46,6 +49,10 @@ export const chartModalSlice = createSlice({
 
 export const chartModalReducer = chartModalSlice.reducer;
 
-export const { setIsSubmitDisabled, setName, toogleParameter } = chartModalSlice.actions;
+export const { 
+    changeChartKindForParameterId, 
+    setIsSubmitDisabled, 
+    setName, 
+    toogleParameter } = chartModalSlice.actions;
 
 export const { selectParametersError } = chartModalSlice.selectors;

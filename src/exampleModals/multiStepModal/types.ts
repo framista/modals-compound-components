@@ -27,6 +27,7 @@ export type Parameter = {
 export type Chart = {
     name: string;
     order: number;
+    y1Unit: string;
     malfunctions: Malfunction['id'][];
-    parameters: { id: Parameter['id'], chartType: ChartKind }[];
+    parameters: { id: Parameter['id'], chartKind: ChartKind }[];
 }
