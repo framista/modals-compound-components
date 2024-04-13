@@ -5,3 +5,5 @@ export const getParameterError = (selectedParameters: ChartModalState['selectedP
     if (selectedParameters.length === 0) return noParameterChoosen;
     if (selectedUnits.length > 2) return errorTwoManyUnits;
 }
+
+export const createUnit = (unit: string) => `UNIT [${unit}]`;

@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { isEmptyArray } from "../../utils/array";
 import { ChartKind, Malfunction, Parameter } from "./types";
-import { getParameterError } from "./utils";
+import { createUnit, getParameterError } from "./utils";
 import { noMalfunctionChoosen } from "./constants";
 
 export type ChartModalState = {
@@ -10,12 +10,14 @@ export type ChartModalState = {
     selectedUnits: Parameter['unit'][];
     selectedParameters: Parameter[];
     chartKindForParameterId: Record<Parameter['id'], ChartKind>;
-    selectedMalfunctions: Malfunction['id'][]
+    selectedMalfunctions: Malfunction['id'][];
+    y1Unit: string;
 }
 
 export const initialState: ChartModalState = {
     isSubmitDisabled: true,
     name: '',
+    y1Unit: '',
     selectedUnits: [],
     selectedParameters: [],
     chartKindForParameterId: {},
@@ -31,6 +33,7 @@ export const chartModalSlice = createSlice({
         },
         setName: (state, { payload }: PayloadAction<ChartModalState['name']> ) => {
             state.name = payload;
+            state.isSubmitDisabled = !state.name.trim();
         },
         toogleParameter: (state, { payload: parameter }: PayloadAction<Parameter>) => {
             const isExist = state.selectedParameters.some(p => p.id === parameter.id);
@@ -41,6 +44,7 @@ export const chartModalSlice = createSlice({
             }
             state.selectedUnits = [...new Set(state.selectedParameters.map(p => p.unit))];
             state.isSubmitDisabled = !!getParameterError(state.selectedParameters, state.selectedUnits);
+            if (!isEmptyArray(state.selectedUnits)) state.y1Unit = createUnit(state.selectedUnits[0]);
         },
         toogleMalfunction: (state, { payload: id }: PayloadAction<Malfunction['id']>) => {
             state.selectedMalfunctions = state.selectedMalfunctions.includes(id) ? 
@@ -49,6 +53,9 @@ export const chartModalSlice = createSlice({
         },
         changeChartKindForParameterId: (state, { payload: { id, kind } } : PayloadAction<{ id: Parameter['id'], kind: ChartKind }>) => {
             state.chartKindForParameterId[id] = kind;
+        },
+        changeLeftYAxis: (state, { payload } : PayloadAction<ChartModalState['y1Unit']>) => {
+            state.y1Unit = payload;
         }
     },
     selectors: {
@@ -61,6 +68,7 @@ export const chartModalReducer = chartModalSlice.reducer;
 
 export const { 
     changeChartKindForParameterId, 
+    changeLeftYAxis,
     setIsSubmitDisabled, 
     setName, 
     toogleMalfunction,

@@ -6,15 +6,14 @@ import { ParameterItem } from "./parameterItem";
 
 type Props = {
     unit: string;
-    unitIndex: number;
-}
+ }
 
-export const ParameterSection = ({ unit,  unitIndex }: Props) => {
+export const ParameterSection = ({ unit }: Props) => {
     const relevantParameters = grouppedParameters[unit] || [];
 
     return (
         <div>
-            <Typography className="parameters__group" variant="overline">Unit {unitIndex + 1}</Typography>
+            <Typography className="parameters__group" variant="overline">Unit [{unit}]</Typography>
             {relevantParameters.map((p, index) => (
                 <React.Fragment key={p.id}>
                     <ParameterItem parameter={p} key={p.id}/>              

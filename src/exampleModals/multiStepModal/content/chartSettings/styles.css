@@ -1,0 +1,7 @@
+.chartSettings .chartSettings__input {
+    display: flex;
+ }
+
+.chartSettings .chartSettings__selectForm {
+    margin: 20px 0 10px;
+}

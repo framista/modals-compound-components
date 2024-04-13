@@ -16,7 +16,7 @@ const MultiStepModalComponent = () => {
             <Button onClick={openModal} variant="contained">{buttonText}</Button>
             <MultiStepModal
                 content={<Content />}
-                onSubmit={() => {}}
+                onSubmit={() => { console.log(chartModalState) }}
                 stepsAmount={stepAmounts}
                 isOpen={state.isOpen}
                 isSubmitDisabled={chartModalState.isSubmitDisabled}

@@ -14,10 +14,9 @@ export const Parameteres = () => {
         <div className="parameters">
             <Modal.Typography.ModalBodyTitle text="Choose parameters"/>
              <FormGroup>
-                {Object.keys(grouppedParameters).map((unit, unitIndex) => (
+                {Object.keys(grouppedParameters).map((unit) => (
                     <ParameterSection 
                         key={unit}
-                        unitIndex={unitIndex}
                         unit={unit}
                     />
                 ))}
