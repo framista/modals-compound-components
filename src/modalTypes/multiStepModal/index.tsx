@@ -1,6 +1,7 @@
 import React from "react";
 import Modal, { ModalProps } from "../../modals"
 import { useMultiStepModal } from "./useMultiStepModal";
+import { ModalFooterProps } from "../../modals/footer";
 
 type Props = {
     content: React.ReactElement;
@@ -8,12 +9,12 @@ type Props = {
     isSubmitDisabled?: boolean;
     title?: string;
     subTitle?: string;
-    onSubmit: () => void | Promise<void>;
+    onSubmit: ModalFooterProps['onSubmit'];
     stepsAmount: number;
 }
 
 export const MultiStepModal = ({ content, isOpen, isSubmitDisabled, onSubmit, title, subTitle, stepsAmount }: Props) => {
-    const { cancelText, goBack, goNext, step, submitText } = useMultiStepModal(stepsAmount, isOpen);
+    const { cancelText, goBack, goNext, step, submitText } = useMultiStepModal(stepsAmount, isOpen, onSubmit);
 
     return(
         <Modal 

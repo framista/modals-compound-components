@@ -24,7 +24,7 @@ export type Parameter = {
     type: ParameterKind;
 }
 
-export type Chart = {
+export type ChartSettings = {
     name: string;
     order: number;
     y1Unit: string;

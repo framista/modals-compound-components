@@ -4,7 +4,7 @@ import cx from 'clsx';
 import { useChangeBackdropLoadingModal, useCloseModal } from '../context';
 import './styles.css';
 
-type Props = {
+export type ModalFooterProps = {
     cancelText?: string;
     hasCancel?: boolean;
     isSubmitDisabled?: boolean;
@@ -22,7 +22,7 @@ export const ModalFooter = ({
         onSubmit,
         option,
         submitText = "Submit",  
-    }: Props) => {
+    }: ModalFooterProps) => {
     const handleCloseModal = useCloseModal();
     const handleChangeBackdropLoading = useChangeBackdropLoadingModal();
 
