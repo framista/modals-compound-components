@@ -2,9 +2,10 @@ import { groupBy, prop } from "ramda";
 import { ChartKind, Malfunction, Parameter, ParameterKind } from "../types";
 
 export const malfunctions: Malfunction[] = [
-    { id: '1', name: 'Low water level', color: "pink" },
-    { id: '2', name: 'Machine failure', color: "blue" },
-    { id: '3', name: 'Radiator failure', color: "purple" },
+    { id: 'x1', name: 'Low water level', color: "pink" },
+    { id: 'x2', name: 'Machine failure', color: "blue" },
+    { id: 'x3', name: 'Radiator failure', color: "purple" },
+    { id: 'x4', name: 'Device failure', color: "orange" },
 ];
 
 export const chartForParameter: Record<ParameterKind, ChartKind[]> = {

@@ -27,8 +27,8 @@ export const ParameterItem = ({ parameter }: Props) => {
     return (
         <div key={id} className="parameters__row">
             <Checkbox checked={isSelected} onChange={onClickCheckbox} size="small" />
-            <div className="parameters__dot" style={{ background: color}} />
-            <Typography onClick={onClickCheckbox} className="parameters__label" variant="body2">{name}</Typography>
+            <div className="dot" style={{ background: color}} />
+            <Typography onClick={onClickCheckbox} className="label" variant="body2">{name}</Typography>
             <Select
                 value={chartKindForParameterId[id] || chartForParameter[type][0]} // TODO: remove or
                 onChange={onChangeKind}

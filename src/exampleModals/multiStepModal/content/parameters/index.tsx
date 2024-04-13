@@ -1,8 +1,9 @@
-import { FormGroup, Typography } from "@mui/material"
+import { FormGroup } from "@mui/material"
 import { useChartModalContext } from "../../context";
 import { selectParametersError } from "../../reducer";
 import { grouppedParameters } from "../data";
 import { ParameterSection } from "./parameterSection";
+import Modal from "../../../../modals";
 import './styles.css';
 
 export const Parameteres = () => {
@@ -11,8 +12,8 @@ export const Parameteres = () => {
 
     return (
         <div className="parameters">
-            <Typography className="parameters__title" variant="overline" fontWeight={700}>Choose parameters</Typography>
-            <FormGroup>
+            <Modal.Typography.ModalBodyTitle text="Choose parameters"/>
+             <FormGroup>
                 {Object.keys(grouppedParameters).map((unit, unitIndex) => (
                     <ParameterSection 
                         key={unit}
@@ -21,7 +22,7 @@ export const Parameteres = () => {
                     />
                 ))}
             </FormGroup>
-           <Typography className="parameters__text--error" variant="caption" color="error">{error}</Typography>        
+            <Modal.Typography.ModalBodyError text={error} />
         </div>
     )
 }

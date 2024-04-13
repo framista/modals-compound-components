@@ -1,0 +1,14 @@
+.malfunctions__list {
+    margin-top: 10px;
+}
+
+.malfunctions__item {
+    display: flex;
+    align-items: center;
+    user-select: none;
+}
+
+.malfunctions__item .dot {
+    margin: 15px 0;
+    margin-right: 10px;
+}

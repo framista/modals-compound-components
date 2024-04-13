@@ -1,0 +1,10 @@
+.modalBody__title {
+    text-align: center;
+    display: block;
+}
+
+.modalBody__text--error {
+    display: block;
+    padding-top: 10px;
+    height: 25px;
+}

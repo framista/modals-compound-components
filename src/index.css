@@ -13,4 +13,11 @@ body {
 
 .label {
   font-size: 14px !important;
+  cursor: pointer;
+}
+
+.dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
 }

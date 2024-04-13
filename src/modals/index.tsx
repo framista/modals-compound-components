@@ -5,6 +5,7 @@ import { ModalBody } from "./body";
 import { ModalFooter } from "./footer";
 import { BackdropLoading } from "./backdropLoading";
 import { ModalStepper } from "./stepper";
+import * as ModalTypography from './typography';
 import './styles.css';
 
 export type ModalProps = {
@@ -42,5 +43,6 @@ Modal.Header = ModalHeader;
 Modal.Stepper = ModalStepper;
 Modal.Body = ModalBody;
 Modal.Footer = ModalFooter;
+Modal.Typography = ModalTypography;
 
 export default Modal;

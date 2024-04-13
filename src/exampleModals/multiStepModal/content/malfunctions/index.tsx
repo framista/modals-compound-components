@@ -1,20 +1,31 @@
-import { Checkbox, FormControlLabel, FormGroup, Typography } from "@mui/material"
+import { Checkbox, Divider, Typography } from "@mui/material"
+import { isLastElement } from "../../../../utils/array"
+import Modal from "../../../../modals"
+import { useChartModalContext } from "../../context"
+import { selectMalfunctionsError, toogleMalfunction } from "../../reducer"
 import { malfunctions } from "../data"
+import './styles.css'
 
 export const Malfunctions = () => {
+    const { state, dispatch } = useChartModalContext();
+    const error = selectMalfunctionsError({ chartModal: state });
+
     return (
-        <div>
-            <Typography variant="overline" fontWeight={700}>Choose Malfunctions:</Typography>
-            <FormGroup>
-                {malfunctions.map(m => (
-                    <FormControlLabel 
-                        key={m.id}
-                        control={<Checkbox defaultChecked />} 
-                        label={m.name} 
-                        classes={{ label: 'label'}}
-                    />                    
+        <>
+            <Modal.Typography.ModalBodyTitle text="Choose Malfunctions"/>
+            <div className="malfunctions__list">
+                {malfunctions.map((m, index) => (
+                    <div key={m.id}>
+                        <div className="malfunctions__item" onClick={() => dispatch(toogleMalfunction(m.id))}>
+                            <Checkbox id={m.id} checked={state.selectedMalfunctions.includes(m.id)}  size="small" />
+                            <div className="dot" style={{ background: m.color}} />
+                            <Typography className="label" variant="body2">{m.name}</Typography>            
+                        </div>
+                        {!isLastElement(malfunctions, index) && <Divider />}                 
+                    </div>
                 ))}
-            </FormGroup>
-        </div>
+            </div>
+            <Modal.Typography.ModalBodyError text={error} />
+        </>
     )
 }
