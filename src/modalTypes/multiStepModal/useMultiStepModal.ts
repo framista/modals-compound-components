@@ -21,7 +21,7 @@ export const useMultiStepModal = (stepAmounts: number, isOpen: ModalProps['isOpe
            await onSubmit();
         }
         setStep(prevStep => !isLastStep ? prevStep + 1 : prevStep);
-    }, [isLastStep])
+    }, [isLastStep, onSubmit])
 
     const goBack = useCallback(() => {
         if (isFirstStep) return closeModal();

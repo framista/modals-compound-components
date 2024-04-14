@@ -1,5 +1,6 @@
 import { groupBy, prop } from "ramda";
-import { ChartKind, Malfunction, Parameter, ParameterKind } from "../types";
+import { ChartKind, ChartSettings, Malfunction, Parameter, ParameterKind } from "../types";
+import { createUnit } from "../utils";
 
 export const malfunctions: Malfunction[] = [
     { id: 'x1', name: 'Low water level', color: "pink" },
@@ -25,4 +26,13 @@ export const parameters: Parameter[] = [
 
 export const grouppedParameters = groupBy(prop('unit'), parameters);
 
-
+export const initialChartSettings: ChartSettings = {
+    malfunctions: [malfunctions[1].id],
+    name: 'Chart',
+    order: 1,
+    y1Unit: createUnit(parameters[0].unit),
+    parameters: [
+        { id: parameters[0].id, chartKind: chartForParameter[parameters[0].type][0] },
+        { id: parameters[5].id, chartKind: chartForParameter[parameters[5].type][0] },
+    ]
+}

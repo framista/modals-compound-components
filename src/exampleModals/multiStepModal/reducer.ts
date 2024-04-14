@@ -7,6 +7,7 @@ import { noMalfunctionChoosen } from "./constants";
 export type ChartModalState = {
     isSubmitDisabled: boolean;
     name: string;
+    order: number;
     selectedUnits: Parameter['unit'][];
     selectedParameters: Parameter[];
     chartKindForParameterId: Record<Parameter['id'], ChartKind>;
@@ -16,6 +17,7 @@ export type ChartModalState = {
 
 export const initialState: ChartModalState = {
     isSubmitDisabled: true,
+    order: 0,
     name: '',
     y1Unit: '',
     selectedUnits: [],

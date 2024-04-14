@@ -11,10 +11,11 @@ const ChartModalContext = createContext<ChartModalContext>(null!);
 
 type ChartModalProps = {
     children: React.ReactNode;
+    initialChartModalProps?: ChartModalState;
 }
 
-export const ChartModalProvider = ({children}: ChartModalProps) => {
-    const [state, dispatch] = useReducer(chartModalReducer, initialState)
+export const ChartModalProvider = ({ children, initialChartModalProps }: ChartModalProps) => {
+    const [state, dispatch] = useReducer(chartModalReducer, initialChartModalProps || initialState)
 
     return (
         <ChartModalContext.Provider value={{state, dispatch}}>
